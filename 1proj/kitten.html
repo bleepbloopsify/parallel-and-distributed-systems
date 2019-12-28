@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <title>
+    Kitten Storage!
+  </title>
+</head>
+
+<body>
+  <a href="/kittens">Back to Listing</a>
+  <h1>Kitten {{.Name}}</h1><h4>#{{.ID}}</h4>
+  <table>
+    <tr>
+      <th>Hungry</th>
+      <th>Times Fed</th>
+      <th>Times Refused Food</th>
+    </tr>
+    <tr>
+      <td>{{.Hungry}}</td>
+      <td>{{.TimesFed}}</td>
+      <td>{{.TimesRefusedFood}}</td>
+      <td>
+        <form method="POST" action="/kitten/feed?id={{.ID}}">
+          <input type="submit" value="Feed Kitten" />
+        </form>
+      </td>
+    </tr>
+  </table>
+
+  <p>
+    <table>
+      <form method="POST" action="/kitten/update?id={{.ID}}">
+        <tr>
+          <td>
+            <input type="text" value="{{.Name}}" name="name"/>
+          </td>
+          <td>
+              <input type="submit" value="Update Name" />
+          </td>
+        </tr>
+      </form>
+      <form method="POST" action="/kitten/delete?id={{.ID}}">
+        <tr>
+          <td></td>
+          <td>
+            <input type="submit" value="Delete Kitten" />
+          </td>
+        </tr>
+      </form>
+    </table>
+  </p>
+
+</body>
+</html>

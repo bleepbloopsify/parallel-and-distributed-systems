@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Giraffes aren't real</title>
+</head>
+
+<body>
+  <h1>Giraffes aren't real</h1>
+
+  <form method="POST">
+    <h2>Edit a Giraffe!</h2>
+    <label for="name">Giraffe Name</label>
+    <input id="name" type="text" name="name" value="{{.Giraffe.Name}}" />
+    <label for="necklength">Giraffe Neck Length</label>
+    <input id="necklength" type="number" name="necklength" value="{{.Giraffe.NeckLength}}" />
+    <input type="submit" value="Update Giraffe" />
+  </form>
+</body>
+
+</html>

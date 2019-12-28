@@ -1,0 +1,58 @@
+# Before Building
+
+This project has no external dependencies. It only uses the go standard library
+
+# Building
+
+`$ go run .`
+
+or
+
+`$ go build .`
+
+I have included a `Dockerfile` with this program.
+However, it also runs natively on OSX and Debian/Ubuntu, as well as most other *nix distributions that support golang.
+
+# Running
+
+`$ go run .`
+
+or
+
+`$./<binary_name> --listen <port>`
+
+# Running with docker
+
+```
+$ docker build -t kittenstorage .
+$ docker run -it -p 8080:8080 kittenstorage
+```
+
+# Testing the application
+
+Visit the interface on your specified port
+
+The web interface is fairly self explanatory.
+
+Create = creating kittens
+Read = pulling information on the kittens
+Update = changing name of kittens / feeding kittens
+Delete = deleting kittens
+
+# Completion
+
+Assignment is completed
+
+# External Resources
+
+One of my friends works at google and I was talking about this project with him. He recommended using `flag`, `html/template`, `http`, and `errors`.
+
+All help with the code I received from the golang documentation.
+
+# Additional Thoughts
+
+The assignment is very clear. I'm not entirely sure how parallelized my implementation of the database is, I would have much preferred to use something more scalable than a global lock on the database.
+
+I'm afraid that the KittenStorage is so dependent on the lock that it can probably only support around 50-60 QPS, but I haven't gotten around to running Apache bm on it yet so I guess we'll see.
+
+Very straightforward assignment, I'm excited to see how we're going to build on this.

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HONK!</title>
+    <style>
+      tr {
+        padding: 5px;
+      }
+      td {
+        text-align: center;
+        padding: 0 5px 0 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Goose Storage</h1>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Honks</th>
+        <th></th>
+        <th></th>
+      </tr>
+      {{range .geese}}
+      <tr>
+        <td><a href="/{{.ID}}">{{.Name}}</a></td>
+        <td>{{.Honks}}</td>
+        <form method="POST" action="/{{.ID}}/honk">
+          <td>
+            <button type="submit">Honk</button>
+          </td>
+        </form>
+        <form method="POST" action="/{{.ID}}/delete">
+          <td>
+            <button type="submit">Delete Goose</button>
+          </td>
+        </form>
+      </tr>
+      {{end}}
+    </table>
+
+
+    <h2>Create a Goose</h2>
+    <form method="POST" action="/">
+      <table>
+        <td>
+          <label for="name">Name:</label>
+        </td>
+        <td>
+          <input type="text" name="name" placeholder="honkers" />
+        </td>
+        <td></td>
+        <td><input type="submit" value="Create Goose!" /></td>
+      </table>
+    </form>
+  </body>
+</html>

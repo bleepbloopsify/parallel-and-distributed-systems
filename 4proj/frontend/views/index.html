@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Giraffes aren't real</title>
+</head>
+
+<body>
+  <h1>Giraffes aren't real</h1>
+
+  <table>
+    {{range .Giraffes}}
+    <tr>
+      <td>
+        {{.Name}}
+      </td>
+      <td>
+        {{.NeckLength}}
+      </td>
+      <td>
+        <form method="POST" action="/{{.Idx}}/delete">
+          <input type="submit" value="Delete Giraffe" />
+        </form>
+      </td>
+      <td>
+        <a href="/{{.Idx}}">Details</a>
+      </td>
+    </tr>
+    {{end}}
+  </table>
+
+  <form method="POST">
+    <h2>Create a Giraffe!</h2>
+    <label for="name">Giraffe Name</label>
+    <input id="name" type="text" name="name" />
+    <input type="submit" value="Create Giraffe" />
+  </form>
+
+</body>
+
+</html>

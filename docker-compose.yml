@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  shell:
+    build: .
+
+    volumes:
+    - ./:/opt
+
+    command: tail -f /dev/null

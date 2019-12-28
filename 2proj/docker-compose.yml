@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  frontend1:
+    build:
+      context: ./frontend
+    ports:
+      - 8001:8080
+    environment:
+      - BACKEND=backend:8091
+    depends_on:
+      - backend
+  
+  frontend2:
+    build:
+      context: ./frontend
+    ports:
+      - 8002:8010
+    environment:
+      - ADDR=8010
+      - BACKEND=backend:8091
+    depends_on:
+      - backend
+
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - 8090:8091
+    environment:
+      - ADDR=8091

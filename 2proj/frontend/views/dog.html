@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Dog Storage!</title>
+</head>
+
+<body>
+  <header>
+    <a href="/dogs">back to listing</a>
+    <h1>{{.dog.Name}}</h1>
+  </header>
+  <p>
+    {{.dog.Description}}
+  </p>
+  <table>
+    <tr>
+      <td>Has Toy:</td>
+      <td>{{.dog.HasToy}}</td>
+    </tr>
+    <tr>
+      <td>Times Pet:</td>
+      <td>{{.dog.TimesPet}}</td>
+    </tr>
+    <tr>
+      <td>Wants to play?</td>
+      <td>{{.dog.WantsToPlay}}</td>
+    </tr>
+  </table>
+
+  <form method="POST" action="/dogs/{{.dog.ID}}/delete">
+    <button type="submit">Delete Dog</button>
+  </form>
+
+  <form method="POST">
+    <h2>Edit Dog</h2>
+    <label for="name">Name:</label>
+    <input id="name" type="text" name="name" value="{{.dog.Name}}" />
+    <label for="description">Description:</label>
+    <input id="description" type="text" name="description" value="{{.dog.Description}}" />
+    <input type="submit" value="Commit changes" />
+  </form>
+</body>
+</html>

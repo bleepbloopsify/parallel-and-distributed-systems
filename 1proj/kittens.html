@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+    <title>
+      Kitten Storage!
+    </title>
+    <style>
+      body {
+        padding: 1em;
+      }
+      td {
+        padding-left: 1em;
+        padding-right: 0.5em;
+      }
+      td:first-child {
+        padding-left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Kittens!</h1>
+
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Is Hungry</th>
+        <th>Times Fed</th>
+        <th>Times Refused Food</th>
+      </tr>
+      {{range .Kittens}}
+        <tr>
+          <td>{{.ID}}</td>
+          <td><a href="/kitten?id={{.ID}}">{{.Name}}</a></td>
+          <td>{{.Hungry}}</td>
+          <td>{{.TimesFed}}</td>
+          <td>{{.TimesRefusedFood}}</td>
+          <td>
+            <form method="POST" action="/kitten/feed?id={{.ID}}&next=/kittens">
+              <input type="submit" value="Feed Kitten" />
+            </form>
+          </td>
+          <td>
+            <form method="POST" action="/kitten/delete?id={{.ID}}">
+              <input type="submit" value="Delete Kitten" />
+            </form>
+          </td>
+        </tr>
+      {{end}}
+    </table>
+
+    <h2>Create Kitten</h2>
+
+    <form method="POST" action="/kitten?next=/kittens">
+      <table>
+        <tr>
+          <td>Name:</td>
+          <td>
+            <input type="text" name="name" placeholder="meooooow" />
+          </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+              <input type="submit" value="Create Kitten" />
+            </td>
+          </tr>
+      </table>
+    </form>
+
+  </body>
+</html>
